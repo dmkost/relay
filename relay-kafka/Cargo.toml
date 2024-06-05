@@ -34,4 +34,5 @@ producer = [
   "dep:rmp-serde",
   "dep:serde_json",
   "rdkafka-sys/cmake-build",
+  "rdkafka-sys/sasl",
 ]

@@ -1,9 +1,11 @@
 FROM debian:bookworm-slim
 
 RUN apt-get update \
-  && apt-get install -y ca-certificates gosu curl --no-install-recommends \
+  && apt-get install -y ca-certificates gosu curl libsasl2-2 --no-install-recommends \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/* \
+  && ln -s /usr/lib/x86_64-linux-gnu/libsasl2.so.2 /usr/lib/x86_64-linux-gnu/libsasl2.so.3 \
+  && ln -s /usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.2 /usr/lib/x86_64-linux-gnu/sasl2/libsasldb.so.3
 
 ENV \
   RELAY_UID=10001 \
